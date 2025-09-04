@@ -1,6 +1,6 @@
 import requests
 
-api_key = "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"  # Replace with your actual API key
+api_key = "BLANK"  # Replace with your actual API key
 url = "https://api.perplexity.ai/chat/completions"
 
 headers = {
