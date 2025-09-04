@@ -1,1 +1,32 @@
+import requests
+
+api_key = "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"  # Replace with your actual API key
+url = "https://api.perplexity.ai/chat/completions"
+
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "model": "sonar",
+    "messages": [
+        {"role": "system", "content": "You are a geopolitical analyst."},
+        {"role": "user", "content": "Generate a risk index with 1 being the riskiest and 0 being the least for NATO countries"}
+    ],
+    "max_tokens": 100,
+    "temperature": 0.1
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    response_json = response.json()
+    answer = response_json['choices'][0]['message']['content']
+    print("Perplexity API response:")
+    print(answer)
+else:
+    print(f"Request failed with status code {response.status_code}")
+    print(response.text)
+
 
